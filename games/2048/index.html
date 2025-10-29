@@ -3,32 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play 2048!</title>
+    <title>2048 Game</title>
     <style>
-        body {
-            background-color: #faf8ef; /* Light cream background */
-            font-family: Arial, sans-serif;
+        /* Styles to make the game iframe full screen */
+        html, body {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            height: 100%;
+            overflow: hidden; /* Prevent scrollbars */
+            box-sizing: border-box;
         }
 
-        h1 {
-            color: #776e65;
-            font-size: 3em;
-        }
-        
         .game-container {
-            width: 100%;
-            max-width: 600px; /* Adjust based on game's ideal size */
-            height: 600px; /* Adjust to match the iframe height */
-            border: 5px solid #bbada0;
-            border-radius: 6px;
-            overflow: hidden; /* Ensures no scrollbars on the container */
+            width: 100vw; /* 100% of the viewport width */
+            height: 100vh; /* 100% of the viewport height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #faf8ef; /* Same background as the game for a seamless look */
         }
         
         .game-container iframe {
@@ -37,25 +29,42 @@
             border: none;
         }
 
-        p {
-            color: #776e65;
-            font-size: 1.2em;
-        }
-
-        /* Responsive styling for smaller screens */
-        @media (max-width: 768px) {
-            .game-container {
-                width: 95%;
-                height: 95vw; /* Use viewport width for a more square-like aspect ratio */
-                max-width: none;
-            }
+        #fullscreen-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 100;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #8f7a66;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-
-    <h1>Play 2048!</h1>
-
     <div class="game-container">
-        <!-- The iframe embeds the game from the specified URL -->
-        <iframe src="
+        <!-- Replace the src with your actual GitHub Pages URL -->
+        <iframe id="game-iframe" src="https://<your-github-username>.github.io/2048/" title="2048 Game"></iframe>
+    </div>
+
+    <button id="fullscreen-button">Fullscreen</button>
+
+    <script>
+        const fullscreenButton = document.getElementById('fullscreen-button');
+        const gameIframe = document.getElementById('game-iframe');
+
+        fullscreenButton.addEventListener('click', () => {
+            if (gameIframe.requestFullscreen) {
+                gameIframe.requestFullscreen();
+            } else if (gameIframe.webkitRequestFullscreen) { /* Safari */
+                gameIframe.webkitRequestFullscreen();
+            } else if (gameIframe.msRequestFullscreen) { /* IE11 */
+                gameIframe.msRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
