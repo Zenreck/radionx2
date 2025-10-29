@@ -3,57 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Game Website</title>
+    <title>Play 2048!</title>
     <style>
         body {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
-            font-family: sans-serif;
-            text-align: center;
+            background-color: #faf8ef; /* Light cream background */
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
+
+        h1 {
+            color: #776e65;
+            font-size: 3em;
+        }
+        
         .game-container {
-            position: relative;
-            width: 90%;
-            max-width: 1000px; /* Adjust as needed */
-            margin: 0 auto;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio (9/16) */
-            background-color: #000;
+            width: 100%;
+            max-width: 600px; /* Adjust based on game's ideal size */
+            height: 600px; /* Adjust to match the iframe height */
+            border: 5px solid #bbada0;
+            border-radius: 6px;
+            overflow: hidden; /* Ensures no scrollbars on the container */
         }
+        
         .game-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
+            border: none;
         }
-        h1 {
-            color: #ffffff;
+
+        p {
+            color: #776e65;
+            font-size: 1.2em;
         }
-        .footer {
-            margin-top: 20px;
-            font-size: 0.8em;
-            color: #888;
+
+        /* Responsive styling for smaller screens */
+        @media (max-width: 768px) {
+            .game-container {
+                width: 95%;
+                height: 95vw; /* Use viewport width for a more square-like aspect ratio */
+                max-width: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to My Game!</h1>
+    <h1>Play 2048!</h1>
 
-    <!-- This container makes the game iframe responsive -->
     <div class="game-container">
-        <!-- The iframe is where your game is embedded -->
-        <iframe src="my-game/index.html" allowfullscreen></iframe>
-    </div>
-
-    <p>Enjoy playing my game. Feel free to leave feedback!</p>
-
-    <div class="footer">
-        © 2025 My Game Website.
-    </div>
-
-</body>
-</html>
+        <!-- The iframe embeds the game from the specified URL -->
+        <iframe src="
